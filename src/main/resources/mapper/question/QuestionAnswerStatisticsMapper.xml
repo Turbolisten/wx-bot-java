@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.turbolisten.bot.service.module.business.question.answerstatistics.QuestionAnswerStatisticsDao">
+
+
+    <!-- 根据用户 试题id 查询错题记录 -->
+    <select id="selectByUserAndQuestion"
+            resultType="com.turbolisten.bot.service.module.business.question.answerstatistics.domain.QuestionAnswerStatisticsEntity">
+        SELECT * FROM t_question_answer_statistics
+        WHERE user_id = #{userId} AND question_id = #{questionId}
+        LIMIT 1
+    </select>
+
+</mapper>

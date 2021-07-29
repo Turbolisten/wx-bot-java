@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.turbolisten.bot.service.module.business.question.question.QuestionDao">
+
+    <!-- 根据题目查询id -->
+    <select id="selectIdByTitle" resultType="java.lang.Long">
+        SELECT question_id FROM t_question
+        WHERE question_title = #{title}
+        LIMIT 1
+    </select>
+
+    <!-- 随机查询试题 -->
+    <select id="queryByRand"
+            resultType="com.turbolisten.bot.service.module.business.question.question.domain.QuestionVO">
+        SELECT c2.catalog_id AS parent_catalog_id,c2.catalog_name AS parent_catalog_name,c1.catalog_name,q.*,rand()AS r
+        FROM t_question AS q
+        LEFT JOIN t_question_catalog AS c1 ON c1.catalog_id = q.catalog_id
+        LEFT JOIN t_question_catalog AS c2 ON c1.parent_id = c2.catalog_id
+        <where>
+            <if test="query.deletedFlag != null">
+                AND q.deleted_flag = #{query.deletedFlag}
+            </if>
+            <if test="query.publishFlag != null">
+                AND q.publish_flag = #{query.publishFlag}
+            </if>
+            <if test="query.questionType != null">
+                AND q.question_type = #{query.questionType}
+            </if>
+            <if test="query.catalogId != null">
+                AND q.catalog_id = #{query.catalogId}
+            </if>
+            <if test="query.parentCatalogId != null">
+                AND c2.catalog_id = #{query.parentCatalogId}
+            </if>
+        </where>
+        ORDER BY r
+        <if test="query.limit != null">
+            LIMIT ${query.limit}
+        </if>
+    </select>
+
+</mapper>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.turbolisten.bot.service.module.business.question.question.QuestionOptionDao">
+
+    <!-- 查询试题选项 -->
+    <select id="queryByQuestionId"
+            resultType="com.turbolisten.bot.service.module.business.question.question.domain.QuestionOptionVO">
+        SELECT * FROM t_question_option
+        WHERE question_id IN
+        <foreach collection="questionIdList" open="(" item="questionId" close=")" separator=",">
+            #{questionId}
+        </foreach>
+        ORDER BY option_tag
+    </select>
+</mapper>

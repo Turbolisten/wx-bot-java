@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.turbolisten.bot.service.module.business.task.basic.TaskConfigDao">
+
+    <!-- 查询任务列表 -->
+    <select id="query" resultType="com.turbolisten.bot.service.module.business.task.basic.TaskConfigEntity">
+        SELECT * FROM t_task_config
+        <where>
+            <if test="enabledFlag != null">
+                enabled_flag = #{enabledFlag}
+            </if>
+        </where>
+    </select>
+
+</mapper>

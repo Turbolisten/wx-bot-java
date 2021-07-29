@@ -1,0 +1,25 @@
+${AnsiColor.BRIGHT_GREEN}
+
+
+                                    _..._
+                                  .'     '.      _
+                                 /    .-""-\   _/ \
+                               .-|   /:.   |  |   |
+                               |  \  |:.   /.-'-./
+                               | .-'-;:__.'    =/
+                               .'=  *=| BOT _.='
+                              /   _.  |    ;
+                             ;-.-'|for \hi |
+                            /   | \    _\  _\
+                            \__/'._;.  ==' ==\
+                                     \    \   |
+                                     /    /   /
+                                     /-._/-._/
+                                     \   `\  \
+                                      `-._/._/
+
+wx-bot v1.0.0 create by Turbolisten
+
+Spring-Boot ${spring-boot.version}
+
+${AnsiColor.DEFAULT}
